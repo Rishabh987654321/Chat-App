@@ -18,6 +18,7 @@ This is a real-time chat application designed to provide seamless and instant co
 ### Frontend
 - **React.js**
 - **ShadCN UI** (for styling and UI components)
+- **zustand** (for state management)
 
 ### Backend
 - **Node.js**
@@ -37,18 +38,18 @@ This is a real-time chat application designed to provide seamless and instant co
 ### Steps
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/Rishabh987654321/Chat-App.git
+   cd Chat-App
    ```
 
 2. **Install Dependencies**
    ```bash
    # For the frontend
-   cd frontend
+   cd client
    npm install
 
    # For the backend
-   cd ../backend
+   cd server
    npm install
    ```
 
@@ -71,12 +72,12 @@ This is a real-time chat application designed to provide seamless and instant co
 4. **Run the Application**
    ```bash
    # Start the backend server
-   cd backend
-   npm start
+   cd server
+   npm run dev
 
    # Start the frontend server
-   cd ../frontend
-   npm start
+   cd client
+   npm run dev
    ```
 
 5. **Access the Application**
