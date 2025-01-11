@@ -63,18 +63,44 @@ const Auth = () => {
     return true;
   };
 
-  const handleLogin=async()=>{
-    if(validateLogin()){
-      const response=await apiClient.post(LOGIN_ROUTE,{email,password},{withCredentials:true});
-      console.log(response)
-      if(response.data.user.id){
-        setUserInfo(response.data.user)
-        if(response.data.user.profileSetup) navigate("/chat")
-          else navigate("/profile ")
+  // const handleLogin=async()=>{
+  //   if(validateLogin()){
+  //     const response=await apiClient.post(LOGIN_ROUTE,{email,password},{withCredentials:true});
+  //     console.log(response)
+  //     if(response.data.user.id){
+  //       setUserInfo(response.data.user)
+  //       if(response.data.user.profileSetup) navigate("/chat")
+  //         else navigate("/profile ")
+  //     }
+  //   }
+    
+  // }
+  const handleLogin = async () => {
+    if (validateLogin()) {
+      try {
+        const response = await apiClient.post(
+          LOGIN_ROUTE,
+          { email, password },
+          { withCredentials: true }
+        );
+        console.log(response);
+  
+        if (response.data.user?.id) {
+          setUserInfo(response.data.user);
+          if (response.data.user.profileSetup) navigate("/chat");
+          else navigate("/profile");
+        } else {
+          toast.error("User not found with the given credentials!");
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          toast.error("Invalid credentials. Please try again.");
+        } else {
+          toast.error("An unexpected error occurred. Please try again later.");
+        }
       }
     }
-    
-  }
+  };
   const handleSignup=async()=>{
     if(validateSignup()){
       const response=await apiClient.post(

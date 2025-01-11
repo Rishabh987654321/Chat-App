@@ -24,7 +24,7 @@ const MessageBar = () => {
         setMessage((msg)=>msg + emoji.emoji)
     }
     const handleSendMessage=async ()=>{
-
+        
     }
   return (
     <div className='h-[10vh] bg-[#1c1d25] flex justify-center items-center px-8 mb-5 gap-6 '>
