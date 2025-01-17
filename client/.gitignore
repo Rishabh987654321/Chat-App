@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.env
+.env.*.local
+.env.local
+.env.test
+.env.production
+npm-error.log
+public/build/
