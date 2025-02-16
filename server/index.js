@@ -16,12 +16,22 @@ const app=express();
 const port=process.env.PORT || 3001;
 const databaseURL=process.env.DATABASE_URL;
 
+// app.use(cors({
+//     origin:[process.env.ORIGIN],
+//     methods:["GET","POST","PUT","PATCH","DELETE"],
+//     credentials:true, 
+// }));
 app.use(cors({
-    origin:[process.env.ORIGIN],
-    methods:["GET","POST","PUT","PATCH","DELETE"],
-    credentials:true, 
+    origin: [
+        process.env.ORIGIN,
+        'https://chat-app-lovat-theta.vercel.app',
+        'http://localhost:3000'
+    ],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range']
 }));
-
 app.use("/uploads/profiles",express.static("uploads/profiles"));
 app.use("/uploads/files",express.static("uploads/files"));
 app.use(cookieParser());
