@@ -23,14 +23,11 @@ const databaseURL=process.env.DATABASE_URL;
 // }));
 app.use(cors({
     origin: [
-        process.env.ORIGIN,
-        'https://chat-app-lovat-theta.vercel.app',
-        'http://localhost:3000'
+        'https://chat-app-lovat-theta.vercel.app'
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    exposedHeaders: ['Content-Range', 'X-Content-Range']
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use("/uploads/profiles",express.static("uploads/profiles"));
 app.use("/uploads/files",express.static("uploads/files"));
