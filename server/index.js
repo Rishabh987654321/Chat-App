@@ -21,6 +21,18 @@ const databaseURL=process.env.DATABASE_URL;
 //     methods:["GET","POST","PUT","PATCH","DELETE"],
 //     credentials:true, 
 // }));
+app.use((req, res, next) => {
+    const allowedOrigin = 'https://chat-app-lovat-theta.vercel.app';
+    res.header('Access-Control-Allow-Origin', allowedOrigin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    
+    if (req.method === 'OPTIONS') {
+        return res.status(200).send();
+    }
+    next();
+});
 app.use(cors({
     origin: [
         'https://chat-app-lovat-theta.vercel.app'
