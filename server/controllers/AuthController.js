@@ -171,7 +171,7 @@ export const removeProfileImage=async (request,response,next)=>{
 export const logout=async (request,response,next)=>{
     try {
         
-        response.cookie("jwt","",{maxAge:1,secure:true,sameSite:"None"})
+        response.cookie("jwt","",{maxAge:1,})
         return response.status(200).send("Logged out Succesfully!");
         
     } catch (error) {
